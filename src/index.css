@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+
+body {
+  font-family: "Oswald", sans-serif;
+  background-color: rgba(0, 0, 0, 0.842);
+  color: #fff;
+}
+h1 {
+  font-size: 50px;
+  margin: 1.8vw;
+}
+h2 {
+  font-size: 25px;
+  margin-left: 1.8vw;
+  margin-bottom: 1vw;
+  margin-top: 1.5vw;
+}
+h3 {
+  margin: 10px;
+  align-items: center;
+}
+.movie-app {
+  display: flex;
+  flex-wrap: wrap;
+}
+.poster-container img {
+  margin: 1.8vw;
+  padding: 10px;
+  width: 20vw;
+}
+.empty-message {
+  margin-top: 40vh;
+}
+.fa-surprise {
+  align-items: center;
+  margin-left: 45px;
+}
