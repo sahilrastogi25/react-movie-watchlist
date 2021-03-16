@@ -1,12 +1,17 @@
-export const Movielist = ({ movies }) => {
+export const Movielist = (props) => {
+  const Watchlist = props.watchlist;
   return (
-    <div className="row">
-      {movies &&
-        movies.map((movie, index) => (
-          <div className="poster-container">
-            <img src={movie.Poster} key={index} alt="moviePoster" />
-          </div>
-        ))}
-    </div>
+    <>
+      {props.movies.map((movie, index) => (
+        <div
+          className="poster-container"
+          key={movie.imdbID}
+          onClick={() => props.handleClick(movie)}
+        >
+          <img src={movie.Poster} alt="movie" />
+          <Watchlist />
+        </div>
+      ))}
+    </>
   );
 };

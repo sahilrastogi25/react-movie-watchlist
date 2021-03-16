@@ -1,6 +1,6 @@
 export const Searchbox = (props) => {
   return (
-    <div className="col-lg-3 d-flex align-item-center col-sm-4 mb-5">
+    <div className="col-lg-3 d-flex ml-3 mt-3 col-sm-4 mb-5">
       <input
         type="text"
         className="form-control"

@@ -3,30 +3,61 @@ import { useEffect, useState } from "react";
 import { Movielist } from "./components/Movielist";
 import { MovielistHeading } from "./components/Movielistheading";
 import { Searchbox } from "./components/Searchbox";
-export const App = () => {
+import { Addtowatchlist } from "./components/Addtowatchlist";
+import { Removefromwatchlist } from "./components/Removefromwatchlist";
+const App = () => {
   const apikey = process.env.REACT_APP_API_KEY;
   const [movies, setMovies] = useState([]);
+  const [mywatchLists, setMyWatchLists] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const getMovieRequest = async () => {
+  const getMovieRequest = async (searchValue) => {
     const url = `http://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
     const response = await fetch(url);
     const responseJson = await response.json();
-    if (responseJson) {
+    if (responseJson.Search) {
       setMovies(responseJson.Search);
     }
   };
   useEffect(() => {
-    getMovieRequest();
+    getMovieRequest(searchValue);
   }, [searchValue]);
+  const addtheMovie = (movie) => {
+    const newWatchlist = [...new Set([...mywatchLists, movie])];
+    setMyWatchLists(newWatchlist);
+  };
+  const removetheMovie = (movie) => {
+    const newWatchList = mywatchLists.filter(
+      (mywatchList) => mywatchList.imdbID !== movie.imdbID
+    );
+    setMyWatchLists(newWatchList);
+  };
   return (
     <div className="container-fluid movie-app">
       <div className="row d-flex align-items-center mt-4">
-        <MovielistHeading heading="Movie Watchlist" />
+        <MovielistHeading
+          heading="Movie Watchlist"
+          subheading="Add a movie or a show to your watchlist Now!"
+        />
         <Searchbox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="row">
-        <Movielist movies={movies} />
+        <Movielist
+          movies={movies}
+          handleClick={addtheMovie}
+          watchlist={Addtowatchlist}
+        />
+      </div>
+      <div className="row d-flex align-items-center mt-4">
+        <MovielistHeading heading="Your Watchlist" />
+      </div>
+      <div className="row">
+        <Movielist
+          movies={mywatchLists}
+          handleClick={removetheMovie}
+          watchlist={Removefromwatchlist}
+        />
       </div>
     </div>
   );
 };
+export default App;

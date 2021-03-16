@@ -5,8 +5,23 @@ body {
   background-color: rgba(0, 0, 0, 0.842);
   color: #fff;
 }
+p {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .poster-container img {
-  margin: 2.5vw;
+  margin: 2vw;
+  box-shadow: 5px 10px 18px rgba(0, 0, 0, 0.658);
   padding: 5px;
   width: 15vw;
+}
+.poster-container img:hover {
+  transform: scale(1.1);
+  transition: 0.4s ease;
+  cursor: pointer;
+}
+.overlay {
+  bottom: 0;
 }
