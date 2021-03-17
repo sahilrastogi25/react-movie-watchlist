@@ -11,7 +11,7 @@ const App = () => {
   const [mywatchLists, setMyWatchLists] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const getMovieRequest = async (searchValue) => {
-    const url = `http://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
+    const url = `https://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
     const response = await fetch(url);
     const responseJson = await response.json();
     if (responseJson.Search) {
