@@ -21,21 +21,38 @@ const App = () => {
   useEffect(() => {
     getMovieRequest(searchValue);
   }, [searchValue]);
+
+  useEffect(() => {
+    const movieWatchlist = JSON.parse(
+      localStorage.getItem("react-movie-app-watchlist")
+    );
+
+    if (movieWatchlist) {
+      setMyWatchLists(movieWatchlist);
+    }
+  }, []);
+
+  const saveToLocalStorage = (items) => {
+    localStorage.setItem("react-movie-app-watchlist", JSON.stringify(items));
+  };
   const addtheMovie = (movie) => {
     const newWatchlist = [...new Set([...mywatchLists, movie])];
     setMyWatchLists(newWatchlist);
+    saveToLocalStorage(newWatchlist);
     alert(movie.Title + ": Added to your watchlist");
   };
   const removetheMovie = (movie) => {
-    const newWatchList = mywatchLists.filter(
+    const newWatchlist = mywatchLists.filter(
       (mywatchList) => mywatchList.imdbID !== movie.imdbID
     );
-    setMyWatchLists(newWatchList);
+    setMyWatchLists(newWatchlist);
+    saveToLocalStorage(newWatchlist);
     alert(movie.Title + ": Removed from your watchlist");
   };
   return (
     <div className="container-fluid movie-app">
       <div className="row d-flex align-items-center mt-4">
+        <i class="fas fa-ticket-alt fa-4x logo"></i>
         <MovielistHeading
           heading="Movie Watchlist"
           subheading="Add a movie or a show to your watchlist Now!"
@@ -50,7 +67,7 @@ const App = () => {
         />
       </div>
       <div className="row d-flex align-items-center mt-4">
-        <MovielistHeading heading="Your Watchlist" />
+        <MovielistHeading subheading="Your Watchlist" />
       </div>
       <div className="row">
         <Movielist

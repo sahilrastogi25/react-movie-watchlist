@@ -1,7 +1,10 @@
 export const Removefromwatchlist = () => {
   return (
     <div className="overlay">
-      <p>Remove from watchlist</p>
+      <p>
+        <i class="far fa-minus-square square"></i>
+        Remove from watchlist
+      </p>
     </div>
   );
 };

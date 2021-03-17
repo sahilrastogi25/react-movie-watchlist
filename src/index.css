@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
 body {
-  font-family: "Oswald", sans-serif;
+  font-family: "PT Sans", sans-serif;
   background-color: rgba(0, 0, 0, 0.842);
   color: #fff;
 }
@@ -24,4 +23,17 @@ p {
 }
 .overlay {
   bottom: 0;
+  cursor: pointer;
+}
+.logo {
+  margin-left: 20px;
+  margin-bottom: 40px;
+  margin-right: -10px;
+  transform: rotate(-30deg);
+}
+.square {
+  margin: 5px;
+}
+#main-heading {
+  cursor: pointer;
 }

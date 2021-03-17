@@ -1,7 +1,10 @@
 export const Addtowatchlist = () => {
   return (
     <div className="overlay">
-      <p>Add to watchlist</p>
+      <p>
+        <i class="far fa-plus-square square"></i>
+        Add to watchlist
+      </p>
     </div>
   );
 };
