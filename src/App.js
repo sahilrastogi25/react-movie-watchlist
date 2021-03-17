@@ -24,12 +24,14 @@ const App = () => {
   const addtheMovie = (movie) => {
     const newWatchlist = [...new Set([...mywatchLists, movie])];
     setMyWatchLists(newWatchlist);
+    alert(movie.Title + ": Added to your watchlist");
   };
   const removetheMovie = (movie) => {
     const newWatchList = mywatchLists.filter(
       (mywatchList) => mywatchList.imdbID !== movie.imdbID
     );
     setMyWatchLists(newWatchList);
+    alert(movie.Title + ": Removed from your watchlist");
   };
   return (
     <div className="container-fluid movie-app">
