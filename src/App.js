@@ -52,7 +52,7 @@ const App = () => {
   return (
     <div className="container-fluid movie-app">
       <div className="row d-flex align-items-center mt-4">
-        <i class="fas fa-ticket-alt fa-4x logo"></i>
+        <i className="fas fa-ticket-alt fa-4x logo"></i>
         <MovielistHeading
           heading="Movie Watchlist"
           subheading="Add a movie or a show to your watchlist Now!"
