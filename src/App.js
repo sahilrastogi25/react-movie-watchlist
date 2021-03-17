@@ -6,7 +6,7 @@ import { Searchbox } from "./components/Searchbox";
 import { Addtowatchlist } from "./components/Addtowatchlist";
 import { Removefromwatchlist } from "./components/Removefromwatchlist";
 const App = () => {
-  const apikey = process.env.REACT_APP_API_KEY;
+  const apikey = "2fb72820";
   const [movies, setMovies] = useState([]);
   const [mywatchLists, setMyWatchLists] = useState([]);
   const [searchValue, setSearchValue] = useState("");
