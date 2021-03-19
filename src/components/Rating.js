@@ -1,7 +1,7 @@
 import { useState } from "react";
 export const Rating = ({ movie }) => {
   const [imdb, setImdb] = useState("");
-  const apikey = process.env.REACT_APP_API_KEY;
+  const apikey = "2fb72820";
   const getImdbRating = async (movie) => {
     const title = movie.Title;
     const url = `https://www.omdbapi.com/?apikey=${apikey}&t=${title}`;
