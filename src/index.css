@@ -9,6 +9,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .poster-container img {
   margin: 2vw;
@@ -36,4 +37,11 @@ p {
 }
 #main-heading {
   cursor: pointer;
+}
+
+#imdb {
+  margin-left: 6px;
+  padding: 2px;
+  border: 2px solid rgba(255, 255, 255, 0.452);
+  box-shadow: 2px 2px 2px rgba(214, 163, 163, 0.233);
 }

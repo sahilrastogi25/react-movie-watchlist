@@ -5,8 +5,9 @@ import { MovielistHeading } from "./components/Movielistheading";
 import { Searchbox } from "./components/Searchbox";
 import { Addtowatchlist } from "./components/Addtowatchlist";
 import { Removefromwatchlist } from "./components/Removefromwatchlist";
+import { Rating } from "./components/Rating";
 const App = () => {
-  const apikey = "2fb72820";
+  const apikey = process.env.REACT_APP_API_KEY;
   const [movies, setMovies] = useState([]);
   const [mywatchLists, setMyWatchLists] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -64,6 +65,7 @@ const App = () => {
           movies={movies}
           handleClick={addtheMovie}
           watchlist={Addtowatchlist}
+          rating={Rating}
         />
       </div>
       <div className="row d-flex align-items-center mt-4">
@@ -74,6 +76,7 @@ const App = () => {
           movies={mywatchLists}
           handleClick={removetheMovie}
           watchlist={Removefromwatchlist}
+          rating={Rating}
         />
       </div>
     </div>
