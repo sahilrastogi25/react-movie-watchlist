@@ -1,4 +1,4 @@
-export const MovielistHeading = ({ heading, subheading }) => {
+export const MovieHeading = ({ heading, subheading }) => {
   return (
     <div className="col-lg-6 ml-3">
       <h1 id="main-heading">{heading}</h1>

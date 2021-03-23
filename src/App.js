@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { Movielist } from "./components/Movielist";
-import { MovielistHeading } from "./components/Movielistheading";
+import { Movie } from "./components/Movie";
+import { MovieHeading } from "./components/Movieheading";
 import { Searchbox } from "./components/Searchbox";
 import { Addtowatchlist } from "./components/Addtowatchlist";
 import { Removefromwatchlist } from "./components/Removefromwatchlist";
@@ -10,9 +10,9 @@ const App = () => {
   const apikey = "2fb72820";
   const [movies, setMovies] = useState([]);
   const [mywatchLists, setMyWatchLists] = useState([]);
-  const [searchValue, setSearchValue] = useState("");
-  const getMovieRequest = async (searchValue) => {
-    const url = `https://www.omdbapi.com/?apikey=${apikey}&s=${searchValue}`;
+  const [searchVal, setSearchVal] = useState("");
+  const getMovie = async (searchVal) => {
+    const url = `https://www.omdbapi.com/?apikey=${apikey}&s=${searchVal}`;
     const response = await fetch(url);
     const responseJson = await response.json();
     if (responseJson.Search) {
@@ -20,8 +20,10 @@ const App = () => {
     }
   };
   useEffect(() => {
-    getMovieRequest(searchValue);
-  }, [searchValue]);
+    setTimeout(() => {
+      getMovie(searchVal);
+    }, 500);
+  }, [searchVal]);
 
   useEffect(() => {
     const movieWatchlist = JSON.parse(
@@ -54,14 +56,14 @@ const App = () => {
     <div className="container-fluid movie-app">
       <div className="row d-flex align-items-center mt-4">
         <i className="fas fa-ticket-alt fa-4x logo"></i>
-        <MovielistHeading
+        <MovieHeading
           heading="Movie Watchlist"
           subheading="Add a movie or a show to your watchlist Now!"
         />
-        <Searchbox searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Searchbox searchVal={searchVal} setSearchVal={setSearchVal} />
       </div>
       <div className="row">
-        <Movielist
+        <Movie
           movies={movies}
           handleClick={addtheMovie}
           watchlist={Addtowatchlist}
@@ -69,10 +71,10 @@ const App = () => {
         />
       </div>
       <div className="row d-flex align-items-center mt-4">
-        <MovielistHeading subheading="Your Watchlist" />
+        <MovieHeading subheading="Your Watchlist" />
       </div>
       <div className="row">
-        <Movielist
+        <Movie
           movies={mywatchLists}
           handleClick={removetheMovie}
           watchlist={Removefromwatchlist}

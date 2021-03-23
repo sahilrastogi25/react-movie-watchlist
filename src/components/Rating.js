@@ -7,11 +7,13 @@ export const Rating = ({ movie }) => {
     const url = `https://www.omdbapi.com/?apikey=${apikey}&t=${title}`;
     const response = await fetch(url);
     const responseJson = await response.json();
-    if (responseJson) {
+    if (responseJson.imdbRating) {
       setImdb(responseJson.imdbRating);
     }
   };
-  getImdbRating(movie);
+  setTimeout(() => {
+    getImdbRating(movie);
+  }, 500);
   return (
     <div className="row d-flex justify-content-center">
       <i className="fab fa-imdb fa-2x"></i>
